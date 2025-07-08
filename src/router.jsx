@@ -1,8 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import GuestRoute from './auth/GuestRoute';
 import ProtectedRoute from './auth/ProtectedRoute';
-import AddProduct from './views/admin/AddProduct';
-import Dashboard from './views/admin/Dashboard';
 import Contact from './views/Contact';
 import Home from './views/Home';
 import Login from './views/Login';
