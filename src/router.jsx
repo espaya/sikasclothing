@@ -58,22 +58,6 @@ export const ROUTE_CONFIG = {
         name: 'trackorder',
     },
 
-    // Admin route
-    ADMIN: {
-        path: '/sc-dashboard',
-        element: <Dashboard />,
-        name: 'Dashboard',
-        isProtected: true,
-        roles: ['ADMIN'],
-    },
-    ADDPRODUCT: {
-        path: '/sc-dashboard/add-product',
-        element: <AddProduct />,
-        name: 'Add Product',
-        isProtected: true,
-        roles: ['ADMIN'],
-    },
-
     // Users route
     ACCOUNT: {
         path: '/account',
