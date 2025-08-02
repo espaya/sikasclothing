@@ -14,8 +14,10 @@
     "axios": "^1.10.0",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.518.0",
+    "md5": "^2.3.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^7.6.2",
     "swiper": "^11.2.8"
   },
