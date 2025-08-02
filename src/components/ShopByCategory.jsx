@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
-import Swiper from 'swiper';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import '../assets/css/style.css';
-import '../assets/css/plugins/swiper.min.css';
+import { useEffect, useRef, useState } from "react";
+import Swiper from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "../assets/css/style.css";
+import "../assets/css/plugins/swiper.min.css";
 
 export default function ShopByCategory() {
   const swiperRef = useRef(null);
@@ -13,15 +13,40 @@ export default function ShopByCategory() {
   const nextRef = useRef(null);
   const paginationRef = useRef(null);
 
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const apiBase = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
   useEffect(() => {
+    const fetchCategories = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`${apiBase}/api/shop-by-category`, {
+          method: "GET",
+          credentials: "include",
+        });
+
+        const data = await response.json();
+
+        setCategories(data);
+      } catch (err) {
+        console.error(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+
     const swiperParams = {
       modules: [Autoplay, Pagination, Navigation],
       autoplay: {
         delay: 5000,
         disableOnInteraction: false,
       },
-      slidesPerView: 4,
-      slidesPerGroup: 4,
+      slidesPerView: 5,
+      slidesPerGroup: 5,
       loop: true,
       spaceBetween: 30,
       navigation: {
@@ -36,29 +61,29 @@ export default function ShopByCategory() {
         320: {
           slidesPerView: 2,
           slidesPerGroup: 2,
-          spaceBetween: 14
+          spaceBetween: 14,
         },
         768: {
           slidesPerView: 3,
           slidesPerGroup: 3,
-          spaceBetween: 24
+          spaceBetween: 24,
         },
         992: {
           slidesPerView: 4,
           slidesPerGroup: 1,
           spaceBetween: 30,
-          pagination: false
+          pagination: false,
         },
         1200: {
           slidesPerView: 5,
           slidesPerGroup: 1,
           spaceBetween: 30,
-          pagination: false
-        }
-      }
+          pagination: false,
+        },
+      },
     };
 
-    swiperRef.current = new Swiper('.category-swiper', swiperParams);
+    swiperRef.current = new Swiper(".category-swiper", swiperParams);
 
     return () => {
       if (swiperRef.current) {
@@ -67,37 +92,37 @@ export default function ShopByCategory() {
     };
   }, []);
 
-  const categories = [
+  [
     {
       id: 1,
-      image: '../images/home/demo2/category1.jpg',
-      name: 'Accessories',
-      count: '20 Products'
+      image: "../images/home/demo2/category1.jpg",
+      name: "Accessories",
+      count: "20 Products",
     },
     {
       id: 2,
-      image: '../images/home/demo2/category2.jpg',
-      name: 'Bags',
-      count: '20 Products'
+      image: "../images/home/demo2/category2.jpg",
+      name: "Bags",
+      count: "20 Products",
     },
     {
       id: 3,
-      image: '../images/home/demo2/category3.jpg',
-      name: 'Shoes',
-      count: '20 Products'
+      image: "../images/home/demo2/category3.jpg",
+      name: "Shoes",
+      count: "20 Products",
     },
     {
       id: 4,
-      image: '../images/home/demo2/category4.jpg',
-      name: 'Outerwear',
-      count: '20 Products'
+      image: "../images/home/demo2/category4.jpg",
+      name: "Outerwear",
+      count: "20 Products",
     },
     {
       id: 5,
-      image: '../images/home/demo2/category5.jpg',
-      name: 'Top',
-      count: '20 Products'
-    }
+      image: "../images/home/demo2/category5.jpg",
+      name: "Top",
+      count: "20 Products",
+    },
   ];
 
   return (
@@ -105,22 +130,31 @@ export default function ShopByCategory() {
       <h2 className="section-title text-uppercase fw-bold text-center mb-3 pb-xl-2 mb-xl-4">
         Shop by category
       </h2>
-      
+
       <div className="position-relative">
         <div className="swiper category-swiper">
           <div className="swiper-wrapper">
-            {categories.map(category => (
+            {categories.map((category) => (
               <div className="swiper-slide" key={category.id}>
                 <img
                   loading="lazy"
-                  className="w-100 h-auto mb-3"
-                  src={category.image}
-                  width="258"
-                  height="278"
+                  src={`${apiBase}/storage/${category.image}`}
                   alt={category.name}
+                  style={{
+                    width: "258px",
+                    height: "278px",
+                    objectFit: "cover",
+                    display: "block", // optional: removes inline gap
+                    backgroundColor: "#fff", // optional: fills space around image
+                    borderRadius: "4px", // optional: adds smooth corners
+                  }}
                 />
+
                 <div className="text-center">
-                  <a href="#" className="menu-link menu-link_us-s text-uppercase">
+                  <a
+                    href="#"
+                    className="menu-link menu-link_us-s text-uppercase"
+                  >
                     {category.name}
                   </a>
                   <p className="mb-0 text-secondary">{category.count}</p>
@@ -130,25 +164,35 @@ export default function ShopByCategory() {
           </div>
         </div>
 
-        <button 
+        <button
           ref={prevRef}
           className="category-prev position-absolute top-50 start-0 translate-middle-y d-flex align-items-center justify-content-center"
         >
-          <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <use href="#icon_prev_md" />
           </svg>
         </button>
 
-        <button 
+        <button
           ref={nextRef}
           className="category-next position-absolute top-50 end-0 translate-middle-y d-flex align-items-center justify-content-center"
         >
-          <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <use href="#icon_next_md" />
           </svg>
         </button>
 
-        <div 
+        <div
           ref={paginationRef}
           className="category-pagination mt-4 d-flex align-items-center justify-content-center"
         ></div>
