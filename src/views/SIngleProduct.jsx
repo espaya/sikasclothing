@@ -384,7 +384,9 @@ export default function SingleProduct() {
                     ></QuantityControl>
                   </form>
                   <div className="product-single__addtolinks">
-                    <SingleProductWishlistForm></SingleProductWishlistForm>
+                    <SingleProductWishlistForm
+                      product_id={singleProduct.id}
+                    ></SingleProductWishlistForm>
                     <Share></Share>
                   </div>
                   <div className="product-single__meta-info">
