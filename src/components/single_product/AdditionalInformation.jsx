@@ -33,26 +33,25 @@ export default function AdditionalInformation({ singleProduct }) {
         <div className="aside-content">
           <div className="product-single__addtional-info">
             <div className="item">
-              <label className="h6">Weight</label>
-              <span> {singleProduct.weight ?? "N/A"} </span>
+              <label className="h6">Weight:</label>
+              <span>{singleProduct.weight ? singleProduct.weight : "N/A"}</span>
             </div>
             <div className="item">
-              <label className="h6">Dimensions</label>
-              <span>{singleProduct.dimensions ?? "N/A"}</span>
+              <label className="h6">Dimensions:</label>
+              <span>
+                {singleProduct.dimensions ? singleProduct.dimensions : "N/A"}
+              </span>
             </div>
 
             <div className="item">
-              <label className="h6">Size</label>
+              <label className="h6">Size:</label>
               {sizes.map((size, index) => (
-                <span key={index}>
-                  {size}
-                  {", "}
-                </span>
+                <span key={index}>{size}</span>
               ))}
             </div>
 
             <div className="item mt-3">
-              <label className="h6">Color</label>
+              <label className="h6">Color:</label>
               <div className="d-flex flex-wrap gap-2">
                 {colors.map((color, index) => (
                   <span
@@ -72,8 +71,10 @@ export default function AdditionalInformation({ singleProduct }) {
             </div>
 
             <div className="item">
-              <label className="h6">Storage</label>
-              <span> {singleProduct.storage ?? "N/A"} </span>
+              <label className="h6">Storage:</label>
+              <span>
+                {singleProduct.storage ? singleProduct.storage : "N/A"}
+              </span>
             </div>
           </div>
         </div>

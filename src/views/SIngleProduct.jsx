@@ -21,6 +21,7 @@ import Cookies from "js-cookie";
 import getCartTotal from "../controller/UpdateCart";
 import Sizes from "../components/single_product/Sizes";
 import Color from "../components/single_product/Color";
+import SingleProductWishlistForm from "../components/single_product/SingleProductWishlistForm";
 
 export default function SingleProduct() {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -383,21 +384,7 @@ export default function SingleProduct() {
                     ></QuantityControl>
                   </form>
                   <div className="product-single__addtolinks">
-                    <a
-                      href="#"
-                      className="menu-link menu-link_us-s add-to-wishlist"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <use href="#icon_heart"></use>
-                      </svg>
-                      <span>Add to Wishlist</span>
-                    </a>
+                    <SingleProductWishlistForm></SingleProductWishlistForm>
                     <Share></Share>
                   </div>
                   <div className="product-single__meta-info">
@@ -432,6 +419,10 @@ export default function SingleProduct() {
                         ))}
                       </span>
                     </div>
+                    <div className="meta-item">
+                      <label>Material:</label>
+                      <span>{singleProduct.material}</span>
+                    </div>
                   </div>
                   <div className="product-single__details">
                     <a
@@ -460,7 +451,7 @@ export default function SingleProduct() {
                 </div>
               </div>
             </section>
-            <RelatedProducts singleProduct={singleProduct}></RelatedProducts>
+            <RelatedProducts slug={slug}></RelatedProducts>
           </>
         )}
       </main>
