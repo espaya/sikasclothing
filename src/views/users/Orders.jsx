@@ -5,6 +5,7 @@ import HeaderMobileHeaderSticky from '../../components/HeaderMobileHeaderSticky'
 import MobileFooter from '../../components/MobileFooter';
 import MyHeader from '../../components/MyHeader';
 import MySvg from '../../components/MySvg';
+import PagesHeader from '../../components/PagesHeader';
 import QuickView from '../../components/QuickView';
 import SiteMap from '../../components/SiteMap';
 import AccountNavigation from '../../components/users/AccountNavigation';
@@ -32,7 +33,7 @@ export default function Orders() {
 
             <MySvg></MySvg>
             <HeaderMobileHeaderSticky></HeaderMobileHeaderSticky>
-            <MyHeader></MyHeader>
+            <PagesHeader></PagesHeader>
 
             <main>
                 <div className="mb-4 pb-4" />

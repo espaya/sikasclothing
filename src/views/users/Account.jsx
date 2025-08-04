@@ -10,6 +10,7 @@ import MyHeader from '../../components/MyHeader';
 import MySvg from '../../components/MySvg';
 import SiteMap from '../../components/SiteMap';
 import AccountNavigation from '../../components/users/AccountNavigation';
+import PagesHeader from '../../components/PagesHeader';
 
 export default function Account() {
     const { user } = useContext(AuthContext);
@@ -29,7 +30,7 @@ export default function Account() {
 
             <MySvg></MySvg>
             <HeaderMobileHeaderSticky></HeaderMobileHeaderSticky>
-            <MyHeader></MyHeader>
+            <PagesHeader></PagesHeader>
 
             <main>
                 <div className="mb-4 pb-4" />

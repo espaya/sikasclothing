@@ -10,6 +10,7 @@ import MySvg from '../../components/MySvg';
 import QuickView from '../../components/QuickView';
 import SiteMap from '../../components/SiteMap';
 import AccountNavigation from '../../components/users/AccountNavigation';
+import PagesHeader from '../../components/PagesHeader';
 
 export default function BillingAddress() {
     // fetch billing address
@@ -146,7 +147,7 @@ export default function BillingAddress() {
             <title>Edit Billing Address - Sika's Clothing</title>
             <MySvg></MySvg>
             <HeaderMobileHeaderSticky></HeaderMobileHeaderSticky>
-            <MyHeader></MyHeader>
+            <PagesHeader></PagesHeader>
             <main>
                 <div class="mb-4 pb-4"></div>
                 <section class="my-account container">

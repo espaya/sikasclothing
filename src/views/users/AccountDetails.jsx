@@ -10,6 +10,7 @@ import MySvg from '../../components/MySvg';
 import QuickView from '../../components/QuickView';
 import SiteMap from '../../components/SiteMap';
 import AccountNavigation from '../../components/users/AccountNavigation';
+import PagesHeader from '../../components/PagesHeader';
 
 export default function AccountDetails() {
     // fetch account details
@@ -144,7 +145,7 @@ export default function AccountDetails() {
             <title>Edit Account | Sika's Clothing</title>
             <MySvg />
             <HeaderMobileHeaderSticky />
-            <MyHeader />
+            <PagesHeader></PagesHeader>
 
             <main>
                 <section className="my-account container">

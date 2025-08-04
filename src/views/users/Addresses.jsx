@@ -9,6 +9,7 @@ import MySvg from '../../components/MySvg';
 import QuickView from '../../components/QuickView';
 import SiteMap from '../../components/SiteMap';
 import AccountNavigation from '../../components/users/AccountNavigation';
+import PagesHeader from '../../components/PagesHeader';
 
 export default function Addresses() {
     const [billing, setBilling] = useState({});
@@ -72,7 +73,7 @@ export default function Addresses() {
 
             <MySvg />
             <HeaderMobileHeaderSticky />
-            <MyHeader />
+            <PagesHeader></PagesHeader>
 
             <main>
                 <div className="mb-4 pb-4" />
